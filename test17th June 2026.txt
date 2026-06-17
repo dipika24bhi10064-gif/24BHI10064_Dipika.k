@@ -1,0 +1,413 @@
+Q13. Find employees from Chennai OR Bangalore.
+ans: db.employees.find({city: { $in: ["Chennai", "Bangalore"] }})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f783'),
+  empId: 102,
+  name: 'Priya',
+  age: 28,
+  department: 'HR',
+  salary: 55000,
+  city: 'Bangalore',
+  experience: 5,
+  skills: [
+    'Recruitment',
+    'Training'
+  ],
+  active: true
+}
+
+
+Q14. Find employees NOT earning above 60000.
+a: db.employees.find({salary: { $not: { $gt: 60000 } }})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f783'),
+  empId: 102,
+  name: 'Priya',
+  age: 28,
+  department: 'HR',
+  salary: 55000,
+  city: 'Bangalore',
+  experience: 5,
+  skills: [
+    'Recruitment',
+    'Training'
+  ],
+  active: true
+}
+
+
+Q15. Find employees neither in IT nor HR.
+a: db.employees.find({  department: { $nin: ["IT", "HR"] }})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f785'),
+  empId: 104,
+  name: 'Sneha',
+  age: 26,
+  department: 'Finance',
+  salary: 50000,
+  city: 'Delhi',
+  experience: 4,
+  skills: [
+    'Excel',
+    'Taxation'
+  ],
+  active: false
+}
+
+Q16. Find documents containing experience field.
+a: db.employees.find({ experience: { $ne: null } })
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f783'),
+  empId: 102,
+  name: 'Priya',
+  age: 28,
+  department: 'HR',
+  salary: 55000,
+  city: 'Bangalore',
+  experience: 5,
+  skills: [
+    'Recruitment',
+    'Training'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f784'),
+  empId: 103,
+  name: 'Rahul',
+  age: 32,
+  department: 'IT',
+  salary: 75000,
+  city: 'Mumbai',
+  experience: 8,
+  skills: [
+    'Python',
+    'MongoDB',
+    'AWS'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f785'),
+  empId: 104,
+  name: 'Sneha',
+  age: 26,
+  department: 'Finance',
+  salary: 50000,
+  city: 'Delhi',
+  experience: 4,
+  skills: [
+    'Excel',
+    'Taxation'
+  ],
+  active: false
+}
+
+Q17. Find documents where salary is Integer.
+a: db.employees.find({ salary: { $type: "int" }})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f783'),
+  empId: 102,
+  name: 'Priya',
+  age: 28,
+  department: 'HR',
+  salary: 55000,
+  city: 'Bangalore',
+  experience: 5,
+  skills: [
+    'Recruitment',
+    'Training'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f784'),
+  empId: 103,
+  name: 'Rahul',
+  age: 32,
+  department: 'IT',
+  salary: 75000,
+  city: 'Mumbai',
+  experience: 8,
+  skills: [
+    'Python',
+    'MongoDB',
+    'AWS'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f785'),
+  empId: 104,
+  name: 'Sneha',
+  age: 26,
+  department: 'Finance',
+  salary: 50000,
+  city: 'Delhi',
+  experience: 4,
+  skills: [
+    'Excel',
+    'Taxation'
+  ],
+  active: false
+}
+
+
+Q18. Find employees having MongoDB skill.
+a:  db.employees.find({skills: "Java"})
+
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+
+Q19. Find employees having both MongoDB and AWS.
+a: db.employees.find({skills: { $all: ["Java", "AWS"]}})
+
+Q20. Find employees with exactly 3 skills.
+a:db.employees.find({skills: { $size: 3 }})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f784'),
+  empId: 103,
+  name: 'Rahul',
+  age: 32,
+  department: 'IT',
+  salary: 75000,
+  city: 'Mumbai',
+  experience: 8,
+  skills: [
+    'Python',
+    'MongoDB',
+    'AWS'
+  ],
+  active: true
+}
+
+Q21. Find employees having Java skill using elemMatch.
+a: db.employees.find({ skills: { $elemMatch: { $eq: "MongoDB" }}})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f782'),
+  empId: 101,
+  name: 'Arun',
+  age: 25,
+  department: 'IT',
+  salary: 45000,
+  city: 'Chennai',
+  experience: 3,
+  skills: [
+    'Java',
+    'MongoDB',
+    'Spring'
+  ],
+  active: true
+}
+
+Q22. Display employees sorted by salary descending.
+a: db.employees.find().sort({salary: -1})
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f784'),
+  empId: 103,
+  name: 'Rahul',
+  age: 32,
+  department: 'IT',
+  salary: 75000,
+  city: 'Mumbai',
+  experience: 8,
+  skills: [
+    'Python',
+    'MongoDB',
+    'AWS'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f786'),
+  empId: 105,
+  name: 'Karthik',
+  age: 30,
+  department: 'IT',
+  salary: 68000,
+  city: 'Chennai',
+  experience: 7,
+  skills: [
+    'NodeJS',
+    'MongoDB',
+    'React'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f783'),
+  empId: 102,
+  name: 'Priya',
+  age: 28,
+  department: 'HR',
+  salary: 55000,
+  city: 'Bangalore',
+  experience: 5,
+  skills: [
+    'Recruitment',
+    'Training'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f785'),
+  empId: 104,
+  name: 'Sneha',
+  age: 26,
+  department: 'Finance',
+  salary: 50000,
+  city: 'Delhi',
+  experience: 4,
+  skills: [
+    'Excel',
+    'Taxation'
+  ],
+  active: false
+}
+
+Q23. Display top 3 highest paid employees.
+a:  db.employees.find().sort({ salary: -1 }).limit(3)
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f784'),
+  empId: 103,
+  name: 'Rahul',
+  age: 32,
+  department: 'IT',
+  salary: 75000,
+  city: 'Mumbai',
+  experience: 8,
+  skills: [
+    'Python',
+    'MongoDB',
+    'AWS'
+  ],
+  active: true
+}
+{
+  _id: ObjectId('6a329dd0da5c73d49e69f786'),
+  empId: 105,
+  name: 'Karthik',
+  age: 30,
+  department: 'IT',
+  salary: 68000,
+  city: 'Chennai',
+  experience: 7,
+  skills: [
+    'NodeJS',
+    'MongoDB',
+    'React'
+  ],
+  active: true
+}
+
+Q24. Increase salary of employee 101 by 5000.
+a: db.employees.updateOne({ empId: 101 },{ $inc: { salary: 5000 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Q25. Increase salary of all IT employees by 10%.
+a: db.employees.updateMany({ department: "IT" },{ $mul: { salary: 1.1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
